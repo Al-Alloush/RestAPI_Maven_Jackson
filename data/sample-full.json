@@ -8,7 +8,9 @@
 		"city": "Philadelphia",
 		"state": "Pennsylvania",
 		"zip": "19103",
-		"country": "USA"
+		"country": "USA",
+		"floor" : "first floor"
 	},
-	"languages" : ["Java", "C#", "Python", "Javascript"]
+	"languages" : ["Java", "C#", "Python", "Javascript"],
+	"company" : "Dachser"
 }
