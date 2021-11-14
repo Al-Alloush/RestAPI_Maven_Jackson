@@ -5,7 +5,7 @@ public class Student {
 	private int id;
 	private String firstName;
 	private String lastName;
-	private boolean actice;
+	private boolean active;
 	
 	public Student() {
 		// TODO Auto-generated constructor stub
@@ -29,12 +29,18 @@ public class Student {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public boolean isActice() {
-		return actice;
+	public boolean isActive() {
+		return active;
 	}
-	public void setActice(boolean actice) {
-		this.actice = actice;
+	public void setActive(boolean actice) {
+		this.active = actice;
 	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", active=" + active + "]";
+	}
+	
 	
 
 }
