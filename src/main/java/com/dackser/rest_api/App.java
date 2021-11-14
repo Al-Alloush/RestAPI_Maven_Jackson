@@ -19,9 +19,13 @@ public class App
 			
 			// read JSON file and map to Java POJO
 			// data/sample-lite.json
-			Student student = mapper.readValue(new File("data/sample-lite.json"), Student.class);
+			// data/sample-full.json
 			
-			System.out.println(student.toString());
+//			Student studentlite = mapper.readValue(new File("data/sample-lite.json"), Student.class);
+//			System.out.println(studentlite.toString());
+			
+			Student studentFull = mapper.readValue(new File("data/sample-full.json"), Student.class);
+			System.out.println(studentFull.toString());
 			
 			
 			

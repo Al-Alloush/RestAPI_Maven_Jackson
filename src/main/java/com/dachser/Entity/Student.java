@@ -1,11 +1,17 @@
 package com.dachser.Entity;
 
+import java.util.Arrays;
+
 public class Student {
 	
 	private int id;
 	private String firstName;
 	private String lastName;
 	private boolean active;
+	private Address address;
+	private String[] languages;
+	
+	
 	
 	public Student() {
 		// TODO Auto-generated constructor stub
@@ -35,11 +41,27 @@ public class Student {
 	public void setActive(boolean actice) {
 		this.active = actice;
 	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	public String[] getLanguages() {
+		return languages;
+	}
+
+	public void setLanguages(String[] languages) {
+		this.languages = languages;
+	}
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", active=" + active + "]";
+		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", active=" + active
+				+ ", \naddress Country=" + address.getCountry() + ", \nlanguages=" + Arrays.toString(languages) + "]";
 	}
+
+	
 	
 	
 
