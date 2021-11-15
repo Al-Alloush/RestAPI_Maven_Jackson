@@ -18,7 +18,7 @@
 	<h1><%=PAGE_TITLE %></h1>
 	<hr>
 
-
+	<a href="${pageContext.request.contextPath}/test/hello">hello</a>
 
 
 
