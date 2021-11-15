@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +21,32 @@ public class StudentRestController {
 	@GetMapping()
 	public List<Student> getStudentx(){
 		
+		List<Student> students = initializeStudentsList();
+
+		return students;
+		
+	}
+	
+	@GetMapping("/{studentId}")
+	public Student getStudentx(@PathVariable int studentId){
+		
+		List<Student> students = initializeStudentsList();
+		
+		Student student = students.get(studentId);
+		
+		// the for each loop
+		for (Student stu : students) {
+			if (stu.getId() == studentId)
+				return stu;
+		}
+		
+		// if not found the student id return null;
+		return student;
+	}
+	
+	
+	private List<Student> initializeStudentsList(){
+		
 		List<Student> students = new ArrayList<Student>();
 		
 		// initialize some random student
@@ -29,7 +56,7 @@ public class StudentRestController {
 			Address address = new Address( "street_"+i, "city_"+i, "state_"+i, "zip_"+i, "country_"+i);
 			String[] languages = {"lan_"+i};
 			
-			Student student = new Student(i, "first Name_" +i, "last Name_" + 1, active, address, languages );
+			Student student = new Student(i, "first Name_" +i, "last Name_" + i, active, address, languages );
 			
 			students.add(student);
 		}
