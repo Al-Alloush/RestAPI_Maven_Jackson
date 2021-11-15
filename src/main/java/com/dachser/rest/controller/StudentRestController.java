@@ -82,5 +82,19 @@ public class StudentRestController {
 		//return ResponseEntity
 		return new ResponseEntity<StudentErrorResponse>(studentErrorResponse, HttpStatus.NOT_FOUND);
 	}
+	
+	// this method to catch all other exceptions 
+	@ExceptionHandler // this Method is an Exception handler, 
+	// this method has response Type: StudentErrorResponse & exception type: all Exception types
+	public ResponseEntity<StudentErrorResponse> handleAllException(Exception exc){
+		
+		// create a StudentErrorResponse
+		StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
+		studentErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value()); // 404 status
+		studentErrorResponse.setMessage(exc.getMessage());
+		
+		//return ResponseEntity
+		return new ResponseEntity<StudentErrorResponse>(studentErrorResponse, HttpStatus.BAD_REQUEST);
+	}
 
 }
