@@ -7,7 +7,6 @@ public class ApiExcepion {
 	private long timeStamp;
 	
 	
-	
 	public int getStatus() {
 		return status;
 	}
@@ -27,6 +26,8 @@ public class ApiExcepion {
 		this.timeStamp = timeStamp;
 	}
 	
+	
+
 	
 	
 	

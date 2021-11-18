@@ -12,26 +12,31 @@ public class ApiExcepionHandler {
 	// tell spring that this messge is will be responsible of handling Exceptions, by use this annotation,
 	// pass this class {value = {ApiRequestNotFoundException.class}} as value 
 	@ExceptionHandler() 
-	public ResponseEntity<Object> HandlerNotFoundException(ApiRequestNotFoundException e){
+	public ResponseEntity<Object> HandlerNotFoundException(ExceptionNotFound e){
+		
+		HttpStatus httpStatus = HttpStatus.NOT_FOUND;
 		
 		ApiExcepion apiExcepion = new ApiExcepion();
-		apiExcepion.setStatus(HttpStatus.NOT_FOUND.value());
+		apiExcepion.setStatus(httpStatus.value());
 		apiExcepion.setMessage(e.getMessage());
 		apiExcepion.setTimeStamp(System.currentTimeMillis());
 		
-		return new ResponseEntity<Object>(apiExcepion, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Object>(apiExcepion, httpStatus);
 		
 	}
+	
 	
 	@ExceptionHandler() 
 	public ResponseEntity<Object> HandlerException(Exception e){
 		
+		HttpStatus httpStatus = HttpStatus.NOT_FOUND;
+		
 		ApiExcepion apiExcepion = new ApiExcepion();
-		apiExcepion.setStatus(HttpStatus.BAD_REQUEST.value());
+		apiExcepion.setStatus(httpStatus.value());
 		apiExcepion.setMessage(e.getMessage());
 		apiExcepion.setTimeStamp(System.currentTimeMillis());
 		
-		return new ResponseEntity<Object>(apiExcepion, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<Object>(apiExcepion, httpStatus);
 		
 	}
 

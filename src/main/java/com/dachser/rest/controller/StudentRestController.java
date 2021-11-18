@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dachser.Entity.Address;
 import com.dachser.Entity.Student;
-import com.dachser.config.exciptionHandler.ApiRequestNotFoundException;
+import com.dachser.config.exciptionHandler.ExceptionNotFound;
 
 @RestController
 @RequestMapping("/student")
@@ -42,7 +42,7 @@ public class StudentRestController {
 		}
 		
 		//
-		throw new ApiRequestNotFoundException("this student: " + studentId + ", not found!");
+		throw new ExceptionNotFound("this student: " + studentId + ", not found!");
 	}
 	
 	
