@@ -1,23 +1,13 @@
-package com.dachser.config;
+package com.dachser.config.exciptionHandler;
 
-public class StudentErrorResponse {
+public class ApiExcepion {
 	
 	private int status;
 	private String message;
+	private long timeStamp;
 	
 	
-	public StudentErrorResponse() {
-	}
 	
-	
-	public StudentErrorResponse(int status, String message) {
-		this.status = status;
-		this.message = message;
-	}
-
-
-
-
 	public int getStatus() {
 		return status;
 	}
@@ -30,6 +20,14 @@ public class StudentErrorResponse {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	public long getTimeStamp() {
+		return timeStamp;
+	}
+	public void setTimeStamp(long timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+	
+	
 	
 	
 

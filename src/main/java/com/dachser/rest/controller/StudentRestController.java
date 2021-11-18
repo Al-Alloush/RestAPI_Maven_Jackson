@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dachser.Entity.Address;
 import com.dachser.Entity.Student;
-import com.dachser.config.StudentErrorResponse;
-import com.dachser.config.StudentNotFoundException;
+import com.dachser.config.exciptionHandler.ApiRequestNotFoundException;
 
 @RestController
 @RequestMapping("/student")
@@ -45,8 +41,8 @@ public class StudentRestController {
 				return stu;
 		}
 		
-		// if not found the student id return null;
-		throw new StudentNotFoundException("Student id: "+studentId+", not found");
+		//
+		throw new ApiRequestNotFoundException("this student: " + studentId + ", not found!");
 	}
 	
 	
@@ -70,31 +66,4 @@ public class StudentRestController {
 		
 	}
 	
-	@ExceptionHandler // this Method is an Exception handler, 
-	// this method has response Type: StudentErrorResponse & exception type: StudentNotFoundException
-	public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exc){
-		
-		// create a StudentErrorResponse
-		StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
-		studentErrorResponse.setStatus(HttpStatus.NOT_FOUND.value()); // 404 status
-		studentErrorResponse.setMessage(exc.getMessage());
-		
-		//return ResponseEntity
-		return new ResponseEntity<StudentErrorResponse>(studentErrorResponse, HttpStatus.NOT_FOUND);
-	}
-	
-	// this method to catch all other exceptions 
-	@ExceptionHandler // this Method is an Exception handler, 
-	// this method has response Type: StudentErrorResponse & exception type: all Exception types
-	public ResponseEntity<StudentErrorResponse> handleAllException(Exception exc){
-		
-		// create a StudentErrorResponse
-		StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
-		studentErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value()); // 404 status
-		studentErrorResponse.setMessage(exc.getMessage());
-		
-		//return ResponseEntity
-		return new ResponseEntity<StudentErrorResponse>(studentErrorResponse, HttpStatus.BAD_REQUEST);
-	}
-
 }

@@ -10,6 +10,6 @@ public class DemoRestController {
 	@RequestMapping("/hello")
 	public String returnHelloWorld() {
 		
-		return "Hello World of Demo Rest Contrller";
+		return "Hello World of Demo Rest Controller";
 	}
 }
